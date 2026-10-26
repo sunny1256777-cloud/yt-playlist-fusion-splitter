@@ -1,0 +1,395 @@
+/* =========================================================
+   YouTube Fusion & Slicer - Modern Glassmorphic Styling
+   ========================================================= */
+
+/* --- Action Buttons in YouTube Player Controls --- */
+.yt-fs-ctrl-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  background: rgba(24, 24, 27, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 14px !important;
+  color: #eeeeee !important;
+  font-family: "YouTube Sans", "Roboto", -apple-system, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  padding: 0 12px !important;
+  margin: 0 6px !important;
+  height: 28px !important;
+  width: auto !important;
+  min-width: max-content !important;
+  overflow: visible !important;
+  line-height: normal !important;
+  user-select: none !important;
+  align-self: center !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  z-index: 30 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.yt-fs-ctrl-btn:hover {
+  background: rgba(39, 39, 42, 0.98) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.yt-fs-ctrl-btn.active-fusion {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(14, 165, 233, 0.3)) !important;
+  border-color: #6366f1 !important;
+  color: #a5b4fc !important;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.5) !important;
+}
+
+.yt-fs-ctrl-btn.active-slicer {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(239, 68, 68, 0.3)) !important;
+  border-color: #ec4899 !important;
+  color: #fbcfe8 !important;
+  box-shadow: 0 0 12px rgba(236, 72, 153, 0.5) !important;
+}
+
+/* --- Action Bar Buttons (Under Video Title) --- */
+.yt-fs-action-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f1f1;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 0 16px;
+  height: 36px;
+  border-radius: 18px;
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  vertical-align: middle;
+}
+
+.yt-fs-action-bar-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.yt-fs-action-bar-btn.active {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: #6366f1;
+  color: #c7d2fe;
+}
+
+/* =========================================================
+   FEATURE 1: Playlist Fusion Bar (Unified Multi-Video Timeline)
+   ========================================================= */
+
+.yt-fs-fusion-container {
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 14px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  cursor: pointer !important;
+  z-index: 55 !important;
+  touch-action: none !important;
+}
+
+.yt-fs-fusion-bg {
+  position: relative !important;
+  width: 100% !important;
+  height: 4px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  transition: height 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#movie_player:hover .yt-fs-fusion-bg,
+.yt-fs-fusion-container:hover .yt-fs-fusion-bg {
+  height: 6px !important;
+}
+
+/* Playlist segment divider lines */
+.yt-fs-fusion-divider {
+  position: absolute !important;
+  top: 0 !important;
+  width: 2px !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  z-index: 2 !important;
+}
+
+.yt-fs-fusion-progress {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, #6366f1, #0ea5e9) !important;
+  pointer-events: none !important;
+  transition: width 0.1s linear !important;
+}
+
+.yt-fs-fusion-scrubber {
+  position: absolute !important;
+  top: 50% !important;
+  width: 13px !important;
+  height: 13px !important;
+  border-radius: 50% !important;
+  background: #0ea5e9 !important;
+  transform: translate(-50%, -50%) scale(0) !important;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), left 0.1s linear !important;
+  pointer-events: none !important;
+  box-shadow: 0 0 6px rgba(14, 165, 233, 0.8) !important;
+}
+
+#movie_player:hover .yt-fs-fusion-scrubber,
+.yt-fs-fusion-container:hover .yt-fs-fusion-scrubber {
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+
+/* Fusion Tooltip */
+.yt-fs-fusion-tooltip {
+  position: absolute !important;
+  bottom: 26px !important;
+  transform: translateX(-50%) !important;
+  background: rgba(15, 17, 23, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  padding: 5px 10px !important;
+  border-radius: 6px !important;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+  display: none !important;
+  white-space: nowrap !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+  z-index: 60 !important;
+}
+
+.yt-fs-fusion-container:hover .yt-fs-fusion-tooltip {
+  display: block !important;
+}
+
+/* =========================================================
+   FEATURE 2: Topic Slicer (Chapter Isolation Mode)
+   ========================================================= */
+
+/* Floating Topic Slicer Drawer */
+.yt-fs-topic-drawer {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  width: 320px !important;
+  max-height: calc(100% - 90px) !important;
+  background: rgba(15, 17, 23, 0.94) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7) !important;
+  z-index: 65 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  user-select: none !important;
+  font-family: "Roboto", sans-serif !important;
+  color: #f3f4f6 !important;
+  transition: opacity 0.25s ease, transform 0.25s ease !important;
+}
+
+.yt-fs-drawer-header {
+  padding: 12px 16px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.yt-fs-drawer-title {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.yt-fs-drawer-close {
+  background: transparent !important;
+  border: none !important;
+  color: #9ca3af !important;
+  font-size: 15px !important;
+  cursor: pointer !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+}
+
+.yt-fs-drawer-close:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.yt-fs-topic-list {
+  padding: 8px !important;
+  overflow-y: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.yt-fs-topic-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid transparent !important;
+  transition: all 0.15s ease !important;
+}
+
+.yt-fs-topic-item:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.yt-fs-topic-item.active {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.18), rgba(239, 68, 68, 0.18)) !important;
+  border-color: #ec4899 !important;
+}
+
+.yt-fs-topic-info {
+  flex: 1 !important;
+  overflow: hidden !important;
+  margin-right: 8px !important;
+}
+
+.yt-fs-topic-name {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #ffffff !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.yt-fs-topic-duration {
+  font-size: 11px !important;
+  color: #9ca3af !important;
+  margin-top: 2px !important;
+}
+
+.yt-fs-topic-badge {
+  font-size: 10px !important;
+  background: rgba(236, 72, 153, 0.2) !important;
+  color: #f472b6 !important;
+  padding: 2px 6px !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+}
+
+/* --- Isolated Topic Header Pill (Over Video) --- */
+.yt-fs-isolated-topic-pill {
+  position: absolute !important;
+  top: 18px !important;
+  left: 18px !important;
+  z-index: 60 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: rgba(15, 17, 23, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(236, 72, 153, 0.4) !important;
+  border-radius: 20px !important;
+  padding: 6px 14px !important;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5) !important;
+}
+
+.yt-fs-isolated-topic-title {
+  color: #f472b6 !important;
+  max-width: 220px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.yt-fs-exit-topic-btn {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-size: 11px !important;
+  padding: 2px 8px !important;
+  border-radius: 12px !important;
+  cursor: pointer !important;
+}
+
+.yt-fs-exit-topic-btn:hover {
+  background: #ef4444 !important;
+}
+
+/* --- Isolated Topic Progress Bar --- */
+.yt-fs-isolated-progress-container {
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 14px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  cursor: pointer !important;
+  z-index: 55 !important;
+}
+
+.yt-fs-isolated-progress-bg {
+  position: relative !important;
+  width: 100% !important;
+  height: 4px !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+
+#movie_player:hover .yt-fs-isolated-progress-bg,
+.yt-fs-isolated-progress-container:hover .yt-fs-isolated-progress-bg {
+  height: 6px !important;
+}
+
+.yt-fs-isolated-progress-bar {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, #ec4899, #f43f5e) !important;
+  pointer-events: none !important;
+}
+
+.yt-fs-isolated-scrubber {
+  position: absolute !important;
+  top: 50% !important;
+  width: 13px !important;
+  height: 13px !important;
+  border-radius: 50% !important;
+  background: #f43f5e !important;
+  transform: translate(-50%, -50%) scale(0) !important;
+  pointer-events: none !important;
+  box-shadow: 0 0 6px rgba(244, 63, 94, 0.8) !important;
+}
+
+#movie_player:hover .yt-fs-isolated-scrubber,
+.yt-fs-isolated-progress-container:hover .yt-fs-isolated-scrubber {
+  transform: translate(-50%, -50%) scale(1) !important;
+}
